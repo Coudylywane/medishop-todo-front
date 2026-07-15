@@ -1,0 +1,30 @@
+name: CI Front
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches-ignore: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Installer les dépendances
+        run: npm ci
+
+      - name: Build de l'application
+        run: npm run build
+
+      - name: Vérifier que l'image Docker build correctement
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: false
