@@ -38,7 +38,7 @@ function App() {
   return (
     <div className="app">
       <h1>Registre des tâches</h1>
-      <p className="subtitle">MediShop — suivi interne d'équipe</p>
+      <p className="subtitle">MediShop — démo soutenance DevOps</p>
 
       <form onSubmit={handleSubmit}>
         <input
